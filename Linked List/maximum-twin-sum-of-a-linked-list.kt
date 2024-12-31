@@ -26,4 +26,25 @@ class Solution {
         
         return max
     }
+
+    // Use Stack
+    fun pairSum(head: ListNode?): Int {
+        var slow = head
+        var fast = head
+        var maxSum = 0
+        val stack = Stack<Int>()
+
+        while (fast != null) {
+            stack.add(slow?.`val`)
+            slow = slow?.next
+            fast = fast.next?.next
+        }
+
+        while (slow != null) {
+            maxSum = max(maxSum, slow.`val` + stack.pop())
+            slow = slow?.next
+        }
+
+        return maxSum
+    }
 }
