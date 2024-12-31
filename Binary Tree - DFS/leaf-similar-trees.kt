@@ -10,20 +10,11 @@
  */
 class Solution {
     fun leafSequence(root: TreeNode?, list: MutableList<Int>) {
-        if (root!= null && root.left == null && root.right == null) {
-            list.add(root.`val`)
-            return
-        }
+        if (root == null) return
+        if (root.left == null && root.right == null) list.add(root.`val`)
 
-        if (root != null){
-            if (root.left != null) {
-                leafSequence(root.left, list)
-            }
-
-            if (root.right != null) {
-                leafSequence(root.right, list)
-            }
-        }
+        leafSequence(root.left, list)
+        leafSequence(root.right, list)
     }
 
     fun leafSimilar(root1: TreeNode?, root2: TreeNode?): Boolean {
