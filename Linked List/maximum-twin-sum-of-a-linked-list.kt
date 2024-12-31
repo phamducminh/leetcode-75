@@ -47,4 +47,24 @@ class Solution {
 
         return maxSum
     }
+
+    // Use List
+    fun pairSum(head: ListNode?): Int {
+        val list = mutableListOf<Int>()
+
+        var temp = head
+        while (temp != null) {
+            list.add(temp.`val`)
+            temp = temp.next
+        }
+
+        var maxSum = 0
+        val n = list.size
+        for (i in 0 .. (n / 2) - 1) {
+            val sum = list[i] + list[n-1-i]
+            maxSum = max(maxSum, sum)
+        }
+        
+        return maxSum
+    }
 }
