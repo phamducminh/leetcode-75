@@ -9,18 +9,13 @@
  * }
  */
 class Solution {
-    fun helper(root: TreeNode?, maxValue: Int): Int {
+    fun dfs(root: TreeNode?, max: Int = Int.MIN_VALUE): Int {
         if (root == null) return 0
-        if (root.`val` < maxValue) {
-            return helper(root.left, maxValue) + helper(root.right, maxValue)
-        } else {
-            val currMax = max(maxValue, root.`val`)
-            return 1 + helper(root.left, currMax) + helper(root.right, currMax)
-        }
+        var res = if (root.`val` >= max) 1 else 0
+        return res + dfs(root.left, max(root.`val`, max)) + dfs(root.right, max(root.`val`, max))
     }
 
-    fun goodNodes(root: TreeNode?): Int { 
-        var max = root?.`val` ?: Int.MIN_VALUE
-        return 1 + helper(root?.left, max) + helper(root?.right, max)
+    fun goodNodes(root: TreeNode?): Int {
+        return dfs(root)
     }
 }
