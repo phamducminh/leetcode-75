@@ -1,9 +1,9 @@
 class Solution {
     fun eraseOverlapIntervals(intervals: Array<IntArray>): Int {
         intervals.sortWith { a, b ->
-        val firstCompare = a[0].compareTo(b[0])
-        if (firstCompare != 0) firstCompare else a[1].compareTo(b[1])
-    }
+            val firstCompare = a[0].compareTo(b[0])
+            if (firstCompare != 0) firstCompare else a[1].compareTo(b[1])
+        }
 
         var res = 0
         var prevEnd = intervals[0][1]
