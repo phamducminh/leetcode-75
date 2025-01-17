@@ -14,4 +14,13 @@ class Solution {
 
         return array[n]
     }
+
+    // Dynamic Programming
+    fun tribonacci(n: Int): Int {
+        val dp = intArrayOf(0, 1, 1)
+        for (i in 3 .. n) {
+            dp[i % 3] = dp[0] + dp[1] + dp[2]
+        }
+        return dp[n % 3]
+    }
 }
