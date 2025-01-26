@@ -33,4 +33,25 @@ class Solution {
 
         return l
     }
+
+    fun compress2(chars: CharArray): Int {
+        var l = 0
+        var r = 0
+        val n = chars.size
+
+        while (r < n) {
+            val curChar = chars[r]
+            var count = 0
+            while (r < n && chars[r] == curChar) {
+                r++
+                count++
+            }
+            chars[l++] = curChar
+            if (count > 1) {
+                count.toString().toList().forEach { digit -> chars[l++] = digit}
+            }
+        }
+
+        return l
+    }
 }
